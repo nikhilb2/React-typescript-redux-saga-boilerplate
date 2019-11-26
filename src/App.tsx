@@ -1,26 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { connect } from 'react-redux'
-import { Route, withRouter } from 'react-router-dom'
+import {  withRouter } from 'react-router-dom'
+import { withStyles } from '@material-ui/styles'
 
-const App: React.FC = () => {
+
+const App: React.FC = (props: any) => {
+  console.log(props)
+  const { classes } = props
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.container}>
+      Coming soon
     </div>
   );
 }
@@ -37,5 +26,9 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(App)
+  )(withStyles({container: {
+    backgroundColor: 'black',
+    width: '100vw',
+    height: '100vh'
+  }})(App))
 )
