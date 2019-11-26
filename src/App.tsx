@@ -2,14 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux'
 import {  withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/styles'
-
+import theme from './theme'
+import Typography from '@material-ui/core/Typography'
 
 const App: React.FC = (props: any) => {
   console.log(props)
   const { classes } = props
   return (
     <div className={classes.container}>
-      Coming soon
+      <Typography className={classes.heading}>Coming soon</Typography>
     </div>
   );
 }
@@ -26,9 +27,16 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(withStyles({container: {
-    backgroundColor: 'black',
-    width: '100vw',
-    height: '100vh'
-  }})(App))
+  )(withStyles({
+    container: {
+      backgroundColor: 'black',
+      width: '100vw',
+      height: '100vh'
+    },
+    heading: {
+      ...theme.typography.caption,
+      color: 'white',
+      textAlign: 'center'
+    }
+  })(App))
 )
